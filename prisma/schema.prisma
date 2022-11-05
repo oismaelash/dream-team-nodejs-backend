@@ -23,7 +23,7 @@ model Route {
   originDatetime      String
   destinationAddress  String
   destinationDatetime String
-  shipId              String
+  shipId              Int
   travel              Travel?  @relation(fields: [travelId], references: [id])
   travelId            Int?
 }

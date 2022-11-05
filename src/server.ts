@@ -1,16 +1,13 @@
 import express from 'express'
-import * as PostController from '@controllers/PostController'
+import TravelRoute from '@routes/travel.route'
 
 const app = express()
 
 app.get('/', (request, response) => {
-  return response.json({ message: 'backend works!' })
+  return response.json({ message: 'api works!' })
 })
 
-app.get('/posts', async (request, response) => {
-  const posts = await PostController.getAllPosts()
-  return response.json(posts)
-})
+app.use(TravelRoute)
 
 const PORT = process.env.PORT ?? 3333
 
