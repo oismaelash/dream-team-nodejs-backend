@@ -8,11 +8,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model post {
-  id               String   @id
-  title            String
-  body             String
-  isSchedule       Boolean
-  datetimeSchedule String
-  createdAt        DateTime @default(now())
+model travel {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  routes    route[]
+}
+
+model route {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  origin      String
+  destination String
+  shipId      String
+  travel      travel?  @relation(fields: [travelId], references: [id])
+  travelId    Int?
+}
+
+model ship {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  priority  Int
+}
+
+model product {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
