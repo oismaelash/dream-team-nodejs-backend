@@ -3,6 +3,8 @@ import TravelRoute from '@routes/travel.route'
 import ShipRoute from '@routes/ship.route'
 
 const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (request, response) => {
   return response.json({ message: `api works! - ${Date.now()}` })
