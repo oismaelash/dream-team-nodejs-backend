@@ -8,39 +8,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model travel {
+model Travel {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  routes    route[]
+  routes    Route[]
 }
 
-model route {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
-  origin      String
-  destination String
-  shipId      String
-  travel      travel?  @relation(fields: [travelId], references: [id])
-  travelId    Int?
+model Route {
+  id                  Int      @id @default(autoincrement())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @default(now())
+  originAddress       String
+  originDatetime      String
+  destinationAddress  String
+  destinationDatetime String
+  shipId              String
+  travel              Travel?  @relation(fields: [travelId], references: [id])
+  travelId            Int?
 }
 
-model ship {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+model Ship {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
+  name         String
+  maximumLoad  Int
+  maximumFuel  Int
+  maximumSpeed Int
+  model        String
 }
 
-model order {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+model Order {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
   priority  Int
+  products  Product[]
 }
 
-model product {
+model Product {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+  quantity  Int
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int?
 }
