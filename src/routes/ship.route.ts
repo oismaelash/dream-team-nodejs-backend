@@ -8,7 +8,7 @@ router.post('/ship', async (request: Request, response: Response) => {
     return response.json(ship)
 })
 
-router.get('/ships', async (request: Request, response: Response) => {
+router.get('/ship', async (request: Request, response: Response) => {
     const ships = await ShipController.getAllShips()
     return response.json(ships)
 })
