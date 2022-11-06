@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import TravelRoute from '@routes/travel.route'
 import ShipRoute from '@routes/ship.route'
 import RouteRoute from '@routes/route.route'
@@ -6,6 +7,7 @@ import OrderRoute from '@routes/order.route'
 import ProductRoute from '@routes/product.route'
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
