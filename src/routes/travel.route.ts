@@ -10,8 +10,8 @@ router.post(prefix, async (request: Request, response: Response) => {
     return response.json(data)
 })
 
-router.get(prefix, async (request: Request, response: Response) => {
-    const data = await TravelController.readAll()
+router.get(`${prefix}/all/:id`, async (request: Request, response: Response) => {
+    const data = await TravelController.readAll(Number(request.params.id))
     return response.json(data)
 })
 

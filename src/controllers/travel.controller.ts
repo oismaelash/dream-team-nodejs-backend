@@ -11,8 +11,8 @@ export async function create(ship: Travel): Promise<Travel> {
   return data
 }
 
-export async function readAll(): Promise<Array<Travel>> {
-  const data = await prisma.travel.findMany()
+export async function readAll(id: number): Promise<Array<Travel>> {
+  const data = await prisma.travel.findMany({ where: { shipId: id }, include: { ship: true, routes: true } })
   return data
 }
 
@@ -20,6 +20,10 @@ export async function readOne(id: number): Promise<Travel> {
   const data = await prisma.travel.findUnique({
     where: {
       id: id
+    },
+    include: {
+      ship: true,
+      routes: true
     }
   })
   return data

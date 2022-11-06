@@ -14,7 +14,7 @@ model Travel {
   updatedAt DateTime @default(now())
   shipId              Int
   ship                Ship?    @relation(fields: [shipId], references: [id])
-  route              Route[] 
+  routes             Route[]
 }
 
 model Route {
@@ -27,8 +27,8 @@ model Route {
   destinationAddress  String
   destinationDatetime String
   distance            Int
-  travelId            Int?
   travel              Travel? @relation(fields: [travelId], references: [id])
+  travelId            Int?
 }
 
 model Ship {
