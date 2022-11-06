@@ -17,6 +17,18 @@ model Travel {
   routes             Route[]
 }
 
+model Option {
+  id                  Int      @id @default(autoincrement())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @default(now())
+  name                String
+  distance            Int
+  originDatetime      String
+  destinationDatetime String
+  route               Route?    @relation(fields: [routeId], references: [id])
+  routeId             Int?
+}
+
 model Route {
   id                  Int      @id @default(autoincrement())
   createdAt           DateTime @default(now())
@@ -29,6 +41,7 @@ model Route {
   distance            Int
   travel              Travel? @relation(fields: [travelId], references: [id])
   travelId            Int?
+  options             Option[]
 }
 
 model Ship {
