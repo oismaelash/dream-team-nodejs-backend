@@ -12,9 +12,9 @@ model Travel {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  shipId              Int
-  ship                Ship?    @relation(fields: [shipId], references: [id])
-  routes             Route[]
+  shipId    Int
+  ship      Ship?    @relation(fields: [shipId], references: [id])
+  routes    Route[]
 }
 
 model Option {
@@ -25,7 +25,7 @@ model Option {
   distance            Int
   originDatetime      String
   destinationDatetime String
-  route               Route?    @relation(fields: [routeId], references: [id])
+  route               Route?   @relation(fields: [routeId], references: [id])
   routeId             Int?
 }
 
@@ -39,9 +39,11 @@ model Route {
   destinationAddress  String
   destinationDatetime String
   distance            Int
-  travel              Travel? @relation(fields: [travelId], references: [id])
+  travel              Travel?  @relation(fields: [travelId], references: [id])
   travelId            Int?
   options             Option[]
+  useFuel             Int
+  consumeFuel         Int
 }
 
 model Ship {
@@ -53,7 +55,7 @@ model Ship {
   maximumFuel  Int
   maximumSpeed Int
   model        String
-  Travel        Travel[]
+  Travel       Travel[]
 }
 
 model Order {

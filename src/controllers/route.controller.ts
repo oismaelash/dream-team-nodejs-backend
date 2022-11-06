@@ -11,7 +11,9 @@ export async function create(route: Route): Promise<Route> {
       originDatetime: route.originDatetime,
       distance: route.distance,
       name: route.name,
-      travelId: route.travelId
+      travelId: route.travelId,
+      useFuel: route.useFuel,
+      consumeFuel: route.consumeFuel
     }
   })
   return data
@@ -41,7 +43,9 @@ export async function update(route: Route): Promise<Route> {
       destinationDatetime: route.destinationDatetime,
       originAddress: route.originAddress,
       originDatetime: route.originDatetime,
-      travelId: route.travelId
+      travelId: route.travelId,
+      useFuel: route.useFuel,
+      consumeFuel: route.consumeFuel
     }
   })
   return data
