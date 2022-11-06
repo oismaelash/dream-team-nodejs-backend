@@ -9,7 +9,8 @@ export async function create(route: Route): Promise<Route> {
       destinationDatetime: route.destinationDatetime,
       originAddress: route.originAddress,
       originDatetime: route.originDatetime,
-      shipId: route.shipId,
+      distance: route.distance,
+      name: route.name,
       travelId: route.travelId
     }
   })
@@ -40,7 +41,6 @@ export async function update(route: Route): Promise<Route> {
       destinationDatetime: route.destinationDatetime,
       originAddress: route.originAddress,
       originDatetime: route.originDatetime,
-      shipId: route.shipId,
       travelId: route.travelId
     }
   })

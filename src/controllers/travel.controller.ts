@@ -4,7 +4,9 @@ const prisma = new PrismaClient()
 
 export async function create(ship: Travel): Promise<Travel> {
   const data = await prisma.travel.create({
-    data: {}
+    data: {
+      shipId: ship.shipId
+    }
   })
   return data
 }
