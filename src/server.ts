@@ -1,5 +1,5 @@
 import express from 'express'
-import cors from 'cors'
+import * as cors from 'cors'
 import TravelRoute from '@routes/travel.route'
 import ShipRoute from '@routes/ship.route'
 import RouteRoute from '@routes/route.route'
