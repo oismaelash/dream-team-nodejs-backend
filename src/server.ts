@@ -1,6 +1,8 @@
 import express from 'express'
 import TravelRoute from '@routes/travel.route'
 import ShipRoute from '@routes/ship.route'
+import RouteRoute from '@routes/route.route'
+import OrderRoute from '@routes/order.route'
 
 const app = express()
 app.use(express.json())
@@ -12,6 +14,8 @@ app.get('/', (request, response) => {
 
 app.use(TravelRoute)
 app.use(ShipRoute)
+app.use(RouteRoute)
+app.use(OrderRoute)
 
 const PORT = process.env.PORT ?? 3333
 

@@ -26,6 +26,7 @@ model Route {
   destinationDatetime String
   distance            Int
   shipId              Int
+  ship                Ship?    @relation(fields: [shipId], references: [id])
   travel              Travel?  @relation(fields: [travelId], references: [id])
   travelId            Int?
 }
@@ -39,6 +40,7 @@ model Ship {
   maximumFuel  Int
   maximumSpeed Int
   model        String
+  Route        Route[]
 }
 
 model Order {

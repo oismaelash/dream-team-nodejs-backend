@@ -1,13 +1,43 @@
 // eslint-disable-next-line no-unused-vars
-import { Travel, PrismaClient } from '@prisma/client'
+import { PrismaClient, Travel } from '@prisma/client'
 const prisma = new PrismaClient()
 
-export async function create(): Promise<Travel> {
-  const travelCreated = await prisma.travel.create({ data: {} })
-  return travelCreated
+export async function create(ship: Travel): Promise<Travel> {
+  const data = await prisma.travel.create({
+    data: {}
+  })
+  return data
 }
 
-export async function getAllTravels(): Promise<Array<Travel>> {
-  const travels = await prisma.travel.findMany()
-  return travels
+export async function readAll(): Promise<Array<Travel>> {
+  const data = await prisma.travel.findMany()
+  return data
+}
+
+export async function readOne(id: number): Promise<Travel> {
+  const data = await prisma.travel.findUnique({
+    where: {
+      id: id
+    }
+  })
+  return data
+}
+
+export async function update(ship: Travel): Promise<Travel> {
+  const data = await prisma.travel.update({
+    where: {
+      id: ship.id
+    },
+    data: {}
+  })
+  return data
+}
+
+export async function deleteOne(id: number): Promise<Travel> {
+  const data = await prisma.travel.delete({
+    where: {
+      id: id
+    }
+  })
+  return data
 }
